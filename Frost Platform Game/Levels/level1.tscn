@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2ys60un1vlfd"]
 
 [ext_resource type="PackedScene" uid="uid://1qxg1wld3bdp" path="res://Player.tscn" id="1_t21ke"]
-[ext_resource type="Texture2D" uid="uid://1d7eexj3bkmg" path="res://icon.svg" id="2_i4kf4"]
+[ext_resource type="Texture2D" uid="uid://cbqnygdfnf6cs" path="res://Assets/Tileset.png" id="2_fy36t"]
 [ext_resource type="PackedScene" uid="uid://b0kggriokxs5q" path="res://GameManager.tscn" id="3_fy36t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1of7"]
@@ -13,16 +13,54 @@ size = Vector2(131, 124)
 position = Vector2(395, 190)
 
 [node name="Floor" type="Node2D" parent="." unique_id=1237451286]
-position = Vector2(547.505, 592.15)
+position = Vector2(23.795, 387.48)
 
 [node name="Floor" type="StaticBody2D" parent="Floor" unique_id=193218191]
-scale = Vector2(8.42, 1)
+position = Vector2(-6.565, 0)
+scale = Vector2(6.445, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor" unique_id=1321483514]
 position = Vector2(-0.5, -2)
 shape = SubResource("RectangleShape2D_p1of7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor/Floor" unique_id=737475244]
-texture = ExtResource("2_i4kf4")
+texture_filter = 3
+position = Vector2(-0.5944176, -2.1500359)
+scale = Vector2(8.246735, 7.7499986)
+texture = ExtResource("2_fy36t")
+
+[node name="Floor2" type="Node2D" parent="." unique_id=2062567871]
+position = Vector2(633, 632.225)
+
+[node name="Floor" type="StaticBody2D" parent="Floor2" unique_id=2024742975]
+position = Vector2(-6.565, 0)
+scale = Vector2(6.445, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2/Floor" unique_id=986515865]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_p1of7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2/Floor" unique_id=1741836332]
+texture_filter = 3
+position = Vector2(-0.5944176, -2.1500359)
+scale = Vector2(8.246735, 7.7499986)
+texture = ExtResource("2_fy36t")
+
+[node name="Floor3" type="Node2D" parent="." unique_id=1082198151]
+position = Vector2(1278.635, 387.48)
+
+[node name="Floor" type="StaticBody2D" parent="Floor3" unique_id=1942666777]
+position = Vector2(-6.565, 0)
+scale = Vector2(6.445, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3/Floor" unique_id=111956288]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_p1of7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor3/Floor" unique_id=1538847091]
+texture_filter = 3
+position = Vector2(-0.5944176, -2.1500359)
+scale = Vector2(8.246735, 7.7499986)
+texture = ExtResource("2_fy36t")
 
 [node name="GameManager" parent="." unique_id=215950766 instance=ExtResource("3_fy36t")]
