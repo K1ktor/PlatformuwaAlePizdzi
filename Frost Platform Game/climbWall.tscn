@@ -10,13 +10,15 @@ size = Vector2(64, 64)
 script = ExtResource("1_3t64i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870680261]
-visible = false
 shape = SubResource("RectangleShape2D_8xo7f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003020570]
 texture_filter = 1
+texture_repeat = 2
 scale = Vector2(4, 4)
 texture = ExtResource("1_dwhyb")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

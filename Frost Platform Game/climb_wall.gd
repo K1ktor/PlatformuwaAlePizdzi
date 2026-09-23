@@ -1,8 +1,9 @@
+@tool
 extends Area2D
 class_name Climb_Wall
 
-@onready var CollisionShape : CollisionShape2D = $CollisionShape2D
-
+@onready var sprite: Sprite2D = $Sprite2D
+@export var use_region := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,6 +11,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if (use_region):
+		var size = self.scale * 16
+		sprite.global_scale = Vector2.ONE * 4
+		sprite.region_rect = Rect2(Vector2.ZERO, size)
 	pass
 
 
