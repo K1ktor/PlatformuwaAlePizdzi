@@ -46,8 +46,8 @@ func ClimbState(delta: float):
 	pass
 
 func IsClimbColliderInsideArea(moveDir : Vector2):
+	# checking if you move is valid inside of climbable wall
 	var wall = wall_that_is_climbed_on
-	print("collision shape = ",  wall.CollisionShape.shape.size)
 	if (transform.origin.x - wall_collider.shape.size.x + moveDir.x < wall.transform.origin.x - 32 * wall.scale.x or
 		transform.origin.x + wall_collider.shape.size.x + moveDir.x > wall.transform.origin.x + 32 * wall.scale.x or 
 		transform.origin.y - wall_collider.shape.size.y + moveDir.y < wall.transform.origin.y - 32 * wall.scale.y or 
@@ -67,7 +67,7 @@ func NormalState(delta: float):
 		is_jumping = false
 	
 	if (Input.is_action_just_pressed("jump") and can_climb_activate):
-		is_climbing = true
+		OnClimbWallEnter()
 		pass
 	if (coyote_jump_time > 0 and is_jumping == false and Input.is_action_pressed("jump")):
 		is_jumping = true
@@ -80,6 +80,20 @@ func NormalState(delta: float):
 	
 	move_and_slide()
 	pass
+
+func OnClimbWallEnter():
+	is_climbing = true
+	# place to nearest possible wallclimb
+	if (IsClimbColliderInsideArea(Vector2.ZERO) == false):
+		if (transform.origin.x - wall_collider.shape.size.x < wall_that_is_climbed_on.transform.origin.x - 32 * wall_that_is_climbed_on.scale.x):
+			transform.origin.x = wall_that_is_climbed_on.transform.origin.x - 32 * wall_that_is_climbed_on.scale.x + wall_collider.shape.size.x
+		elif (transform.origin.x + wall_collider.shape.size.x > wall_that_is_climbed_on.transform.origin.x + 32 * wall_that_is_climbed_on.scale.x):
+			transform.origin.x = wall_that_is_climbed_on.transform.origin.x + 32 * wall_that_is_climbed_on.scale.x - wall_collider.shape.size.x
+		if (transform.origin.y - wall_collider.shape.size.y < wall_that_is_climbed_on.transform.origin.y - 32 * wall_that_is_climbed_on.scale.y):
+			transform.origin.y = wall_that_is_climbed_on.transform.origin.y - 32 * wall_that_is_climbed_on.scale.y + wall_collider.shape.size.y
+		elif (transform.origin.y + wall_collider.shape.size.y > wall_that_is_climbed_on.transform.origin.y + 32 * wall_that_is_climbed_on.scale.y):
+			transform.origin.y = wall_that_is_climbed_on.transform.origin.y + 32 * wall_that_is_climbed_on.scale.y - wall_collider.shape.size.y
+		pass
 
 func EnterClimbWall(climbWall: Climb_Wall):
 	wall_that_is_climbed_on = climbWall
