@@ -12,11 +12,12 @@ size = Vector2(131, 124)
 
 [node name="ClimbWall2" parent="." unique_id=1760684978 instance=ExtResource("4_njhy2")]
 position = Vector2(450, 398)
-use_region = null
+useRegion = false
 
 [node name="ClimbWall" parent="." unique_id=1473806573 instance=ExtResource("4_njhy2")]
 position = Vector2(1005, 286)
 scale = Vector2(3, 6.16)
+useRegion = false
 
 [node name="Player" parent="." unique_id=30985823 instance=ExtResource("1_t21ke")]
 position = Vector2(148, 454)
@@ -60,4 +61,4 @@ texture = ExtResource("2_fy36t")
 
 [node name="ClimbWall3" parent="." unique_id=1408489695 instance=ExtResource("4_njhy2")]
 position = Vector2(1246, 272)
-use_region = null
+useRegion = false
