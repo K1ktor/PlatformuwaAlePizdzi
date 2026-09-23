@@ -3,34 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://1qxg1wld3bdp" path="res://Player.tscn" id="1_t21ke"]
 [ext_resource type="Texture2D" uid="uid://cbqnygdfnf6cs" path="res://Assets/Tileset.png" id="2_fy36t"]
 [ext_resource type="PackedScene" uid="uid://b0kggriokxs5q" path="res://GameManager.tscn" id="3_fy36t"]
+[ext_resource type="PackedScene" uid="uid://px0tsdi4dio3" path="res://climbWall.tscn" id="4_njhy2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1of7"]
 size = Vector2(131, 124)
 
 [node name="Level1" type="Node2D" unique_id=526205843]
 
-[node name="Node2D" parent="." unique_id=30985823 instance=ExtResource("1_t21ke")]
-position = Vector2(395, 190)
+[node name="ClimbWall2" parent="." unique_id=1760684978 instance=ExtResource("4_njhy2")]
+position = Vector2(450, 398)
 
-[node name="Floor" type="Node2D" parent="." unique_id=1237451286]
-position = Vector2(23.795, 387.48)
+[node name="ClimbWall" parent="." unique_id=1473806573 instance=ExtResource("4_njhy2")]
+position = Vector2(1005, 286)
+scale = Vector2(3, 6.16)
 
-[node name="Floor" type="StaticBody2D" parent="Floor" unique_id=193218191]
-position = Vector2(-6.565, 0)
-scale = Vector2(6.445, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor" unique_id=1321483514]
-position = Vector2(-0.5, -2)
-shape = SubResource("RectangleShape2D_p1of7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor/Floor" unique_id=737475244]
-texture_filter = 3
-position = Vector2(-0.5944176, -2.1500359)
-scale = Vector2(8.246735, 7.7499986)
-texture = ExtResource("2_fy36t")
+[node name="Player" parent="." unique_id=30985823 instance=ExtResource("1_t21ke")]
+position = Vector2(148, 454)
 
 [node name="Floor2" type="Node2D" parent="." unique_id=2062567871]
-position = Vector2(633, 632.225)
+position = Vector2(434, 627)
 
 [node name="Floor" type="StaticBody2D" parent="Floor2" unique_id=2024742975]
 position = Vector2(-6.565, 0)
@@ -47,7 +38,8 @@ scale = Vector2(8.246735, 7.7499986)
 texture = ExtResource("2_fy36t")
 
 [node name="Floor3" type="Node2D" parent="." unique_id=1082198151]
-position = Vector2(1278.635, 387.48)
+position = Vector2(278, 200)
+scale = Vector2(0.64, 1)
 
 [node name="Floor" type="StaticBody2D" parent="Floor3" unique_id=1942666777]
 position = Vector2(-6.565, 0)

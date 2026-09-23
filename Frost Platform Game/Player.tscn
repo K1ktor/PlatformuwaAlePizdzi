@@ -2,18 +2,31 @@
 
 [ext_resource type="Script" uid="uid://cer072liwea61" path="res://Player.gd" id="2_epypp"]
 [ext_resource type="Texture2D" uid="uid://cvery5gwwdl88" path="res://Assets/Player.png" id="2_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://1d7eexj3bkmg" path="res://icon.svg" id="3_kne1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo7f"]
-size = Vector2(120, 120)
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1of7"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1549834704]
 script = ExtResource("2_epypp")
+jump_strength = 1300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=708683903]
 texture_filter = 1
 position = Vector2(0, -2.685)
-scale = Vector2(8, 8)
+scale = Vector2(4, 4)
 texture = ExtResource("2_kpjcp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1788455785]
 shape = SubResource("RectangleShape2D_8xo7f")
+
+[node name="Climb_wall_collider" type="CollisionShape2D" parent="." unique_id=1069776011]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_p1of7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Climb_wall_collider" unique_id=662631571]
+scale = Vector2(0.156, 0.156)
+texture = ExtResource("3_kne1u")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://px0tsdi4dio3"]
+
+[ext_resource type="Script" uid="uid://b7xs3cnyb6tin" path="res://climb_wall.gd" id="1_3t64i"]
+[ext_resource type="Texture2D" uid="uid://yqgmj3jhjpv0" path="res://Assets/ClimbWall-TEST.png" id="1_dwhyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo7f"]
+size = Vector2(64, 64)
+
+[node name="ClimbWall" type="Area2D" unique_id=1760684978]
+script = ExtResource("1_3t64i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1870680261]
+visible = false
+shape = SubResource("RectangleShape2D_8xo7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003020570]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_dwhyb")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
