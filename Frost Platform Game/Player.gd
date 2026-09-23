@@ -34,9 +34,13 @@ func ClimbState(delta: float):
 	)
 	var _vertical_direction = (
 		Input.get_action_strength("moveDown")
-		- Input.get_action_strength("jump")
+		- Input.get_action_strength("moveUp")
 	)
 	var moveDir = Vector2(_horizontal_direction, _vertical_direction)
+	if (Input.is_action_just_pressed("jump")):
+		is_jumping = true
+		velocity.y = -jump_strength
+		is_climbing = false
 	if (IsClimbColliderInsideArea(moveDir)):
 		transform.origin += moveDir
 	pass

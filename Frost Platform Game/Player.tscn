@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cer072liwea61" path="res://Player.gd" id="2_epypp"]
 [ext_resource type="Texture2D" uid="uid://cvery5gwwdl88" path="res://Assets/Player.png" id="2_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://1d7eexj3bkmg" path="res://icon.svg" id="3_kne1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo7f"]
 size = Vector2(64, 64)
@@ -26,7 +25,3 @@ shape = SubResource("RectangleShape2D_8xo7f")
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_p1of7")
 disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Climb_wall_collider" unique_id=662631571]
-scale = Vector2(0.156, 0.156)
-texture = ExtResource("3_kne1u")

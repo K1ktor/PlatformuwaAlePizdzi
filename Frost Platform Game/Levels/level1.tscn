@@ -39,7 +39,7 @@ texture = ExtResource("2_fy36t")
 
 [node name="Floor3" type="Node2D" parent="." unique_id=1082198151]
 position = Vector2(278, 200)
-scale = Vector2(0.64, 1)
+scale = Vector2(1.04, 1)
 
 [node name="Floor" type="StaticBody2D" parent="Floor3" unique_id=1942666777]
 position = Vector2(-6.565, 0)
