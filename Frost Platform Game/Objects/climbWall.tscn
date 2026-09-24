@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://px0tsdi4dio3"]
 
-[ext_resource type="Script" uid="uid://b7xs3cnyb6tin" path="res://climb_wall.gd" id="1_3t64i"]
+[ext_resource type="Script" uid="uid://b7xs3cnyb6tin" path="res://Scripts/climb_wall.gd" id="1_3t64i"]
 [ext_resource type="Texture2D" uid="uid://yqgmj3jhjpv0" path="res://Assets/ClimbWall-TEST.png" id="1_dwhyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo7f"]

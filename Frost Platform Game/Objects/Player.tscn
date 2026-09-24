@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://1qxg1wld3bdp"]
 
-[ext_resource type="Script" uid="uid://cer072liwea61" path="res://Player.gd" id="2_epypp"]
+[ext_resource type="Script" uid="uid://cer072liwea61" path="res://Scripts/Player.gd" id="2_epypp"]
 [ext_resource type="Texture2D" uid="uid://cvery5gwwdl88" path="res://Assets/Player.png" id="2_kpjcp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xo7f"]
-size = Vector2(64, 64)
+size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1of7"]
 

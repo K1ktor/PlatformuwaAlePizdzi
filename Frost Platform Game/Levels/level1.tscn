@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c2ys60un1vlfd"]
 
-[ext_resource type="PackedScene" uid="uid://1qxg1wld3bdp" path="res://Player.tscn" id="1_t21ke"]
+[ext_resource type="PackedScene" uid="uid://1qxg1wld3bdp" path="res://Objects/Player.tscn" id="1_t21ke"]
 [ext_resource type="Texture2D" uid="uid://cbqnygdfnf6cs" path="res://Assets/Tileset.png" id="2_fy36t"]
 [ext_resource type="PackedScene" uid="uid://b0kggriokxs5q" path="res://GameManager.tscn" id="3_fy36t"]
-[ext_resource type="PackedScene" uid="uid://px0tsdi4dio3" path="res://climbWall.tscn" id="4_njhy2"]
+[ext_resource type="PackedScene" uid="uid://px0tsdi4dio3" path="res://Objects/climbWall.tscn" id="4_njhy2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1of7"]
 size = Vector2(131, 124)

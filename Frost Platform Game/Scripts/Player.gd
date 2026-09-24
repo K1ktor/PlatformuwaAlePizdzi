@@ -3,6 +3,7 @@ class_name Player_Object
 
 @onready var sprite := $Sprite2D
 @onready var wall_collider := $Climb_wall_collider
+@onready var tile_map := $"../TileMapLayer"
 
 @export var speed := 600.0
 @export var jump_strength := 1500.0
@@ -14,7 +15,7 @@ var is_climbing := false
 var is_jumping := false
 const coyote_init_jump_time := 0.1 
 var coyote_jump_time := 0.1
-
+var prev_friction := 999999.0
 
 func _ready() -> void:
 	pass
@@ -26,6 +27,7 @@ func _process(delta: float) -> void:
 	else:
 		NormalState(delta)
 	pass
+
 
 func ClimbState(delta: float):
 	var _horizontal_direction = (
@@ -41,8 +43,10 @@ func ClimbState(delta: float):
 		is_jumping = true
 		velocity.y = -jump_strength
 		is_climbing = false
-	if (IsClimbColliderInsideArea(moveDir)):
-		transform.origin += moveDir
+	if (IsClimbColliderInsideArea(Vector2(moveDir.x,0))):
+		transform.origin.x += moveDir.x
+	if (IsClimbColliderInsideArea(Vector2(0,moveDir.y))):
+		transform.origin.y += moveDir.y
 	pass
 
 func IsClimbColliderInsideArea(moveDir : Vector2):
@@ -56,6 +60,7 @@ func IsClimbColliderInsideArea(moveDir : Vector2):
 	return true
 
 func NormalState(delta: float):
+	var friction = GetGroundType()
 	var _horizontal_direction = (
 		Input.get_action_strength("moveRight")
 		- Input.get_action_strength("moveLeft")
@@ -70,9 +75,14 @@ func NormalState(delta: float):
 		OnClimbWallEnter()
 		pass
 	if (coyote_jump_time > 0 and is_jumping == false and Input.is_action_pressed("jump")):
+		if (friction < 0.5):
+			prev_friction = 0.5
+			friction = 0.5
 		is_jumping = true
 		velocity.y = -jump_strength
-	velocity.x = _horizontal_direction * speed
+	
+	print(prev_friction)
+	velocity.x = move_toward(velocity.x, _horizontal_direction * speed, friction * 1000 * delta)
 	velocity.y += gravity * delta
 	
 	if (abs(_horizontal_direction) > 0.01): # flip sprite left/right
@@ -81,7 +91,21 @@ func NormalState(delta: float):
 	move_and_slide()
 	pass
 
+func GetGroundType():
+	if (tile_map == null):
+		return prev_friction
+	var tile_pos = tile_map.local_to_map(tile_map.to_local(transform.origin + Vector2.DOWN * 33))
+	var tile_type = tile_map.get_cell_tile_data(tile_pos)
+	if (tile_type != null):
+		var tile_friction = tile_type.get_custom_data("friction")
+		if (tile_friction != null):
+			prev_friction = tile_friction
+			return tile_friction
+	return prev_friction
+
 func OnClimbWallEnter():
+	velocity = Vector2.ZERO
+	prev_friction = 999999
 	is_climbing = true
 	# place to nearest possible wallclimb
 	if (IsClimbColliderInsideArea(Vector2.ZERO) == false):

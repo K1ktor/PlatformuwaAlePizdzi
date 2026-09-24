@@ -1,4 +1,3 @@
-@tool
 extends Area2D
 class_name Climb_Wall
 
