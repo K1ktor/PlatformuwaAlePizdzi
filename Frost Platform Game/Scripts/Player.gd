@@ -60,7 +60,9 @@ func IsClimbColliderInsideArea(moveDir : Vector2):
 	return true
 
 func NormalState(delta: float):
-	var friction = GetGroundType()
+	# Get on what type of ground player is if it's ice its more slipery
+	var friction = GetGroundFriction() 
+	
 	var _horizontal_direction = (
 		Input.get_action_strength("moveRight")
 		- Input.get_action_strength("moveLeft")
@@ -74,14 +76,16 @@ func NormalState(delta: float):
 	if (Input.is_action_just_pressed("jump") and can_climb_activate):
 		OnClimbWallEnter()
 		pass
+		
 	if (coyote_jump_time > 0 and is_jumping == false and Input.is_action_pressed("jump")):
+		# If your friction is low make it higher for easier jumps
 		if (friction < 0.5):
 			prev_friction = 0.5
 			friction = 0.5
 		is_jumping = true
 		velocity.y = -jump_strength
-	
-	print(prev_friction)
+
+	# ease between speed to apply friction
 	velocity.x = move_toward(velocity.x, _horizontal_direction * speed, friction * 1000 * delta)
 	velocity.y += gravity * delta
 	
@@ -90,8 +94,9 @@ func NormalState(delta: float):
 	
 	move_and_slide()
 	pass
-
-func GetGroundType():
+	
+## Gets friction below you based on custom data in Tilemap
+func GetGroundFriction():
 	if (tile_map == null):
 		return prev_friction
 	var tile_pos = tile_map.local_to_map(tile_map.to_local(transform.origin + Vector2.DOWN * 33))
