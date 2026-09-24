@@ -1,0 +1,39 @@
+[gd_scene format=4 uid="uid://drv50y5du7k1k"]
+
+[ext_resource type="Texture2D" uid="uid://cbqnygdfnf6cs" path="res://Assets/Tileset.png" id="1_eh6o7"]
+[ext_resource type="PackedScene" uid="uid://px0tsdi4dio3" path="res://Objects/climbWall.tscn" id="2_vr4rd"]
+[ext_resource type="PackedScene" uid="uid://1qxg1wld3bdp" path="res://Objects/Player.tscn" id="3_eex2w"]
+[ext_resource type="PackedScene" uid="uid://b0kggriokxs5q" path="res://GameManager.tscn" id="4_ltsrt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2jaon"]
+texture = ExtResource("1_eh6o7")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/custom_data_0 = 200.0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/custom_data_0 = 0.2
+
+[sub_resource type="TileSet" id="TileSet_2cw1i"]
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "friction"
+custom_data_layer_0/type = 3
+sources/0 = SubResource("TileSetAtlasSource_2jaon")
+
+[node name="Level3" type="Node2D" unique_id=15639985]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1811630546]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAACAAoAAAAAAAAAAAABAAoAAAAAAAAAAAAAAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAADAAoAAAAAAAAAAAD//wQAAAAAAAAAAAD//woAAAAAAAAAAAD//wkAAAAAAAAAAAD//wgAAAAAAAAAAAD//wcAAAAAAAAAAAD//wYAAAAAAAAAAAD//wUAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAD/////AAAAAAAAAAD//wMAAAAAAAAAAAD///7/AAAAAAAAAAASAP//AAAAAAAAAAASAAAAAAAAAAAAAAASAAEAAAAAAAAAAAASAAIAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASAAoAAAAAAAAAAAACAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAASAAkAAAAAAAAAAAAQAAYAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAAGAAUAAAABAAAAAAAGAAYAAAABAAAAAAAGAAcAAAABAAAAAAAFAAUAAAABAAAAAAAFAAYAAAABAAAAAAAFAAcAAAABAAAAAAAEAAIAAAABAAAAAAADAAIAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAAJAAEAAAABAAAAAAALAAUAAAABAAAAAAAKAAUAAAABAAAAAAAKAAYAAAABAAAAAAALAAYAAAABAAAAAAALAAcAAAABAAAAAAAKAAcAAAABAAAAAAANAAAAAAABAAAAAAAMAAAAAAABAAAAAAAMAP//AAABAAAAAAANAP//AAABAAAAAAAGAAQAAAABAAAAAAANAP7/AAABAAAAAAANAP3/AAABAAAAAAANAPz/AAABAAAAAAAMAPz/AAABAAAAAAAMAP3/AAABAAAAAAAMAP7/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_2cw1i")
+
+[node name="ClimbWall" parent="." unique_id=1760684978 instance=ExtResource("2_vr4rd")]
+position = Vector2(64, 448)
+scale = Vector2(1.2, 4)
+
+[node name="CharacterBody2D" parent="." unique_id=1549834704 instance=ExtResource("3_eex2w")]
+position = Vector2(88, 256)
+
+[node name="GameManager" parent="." unique_id=215950766 instance=ExtResource("4_ltsrt")]
+position = Vector2(-120, 144)
