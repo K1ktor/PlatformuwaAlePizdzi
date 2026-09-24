@@ -6,7 +6,7 @@ class_name Player_Object
 @onready var tile_map := $"../TileMapLayer"
 
 var speed := 600.0
-var jump_strength := 100
+var jump_strength := 1000
 var gravity := 3000.0 
 
 var can_climb_activate := false # Is player next to wall that can be climbed

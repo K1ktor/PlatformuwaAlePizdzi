@@ -10,7 +10,6 @@ size = Vector2(60, 60)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1549834704]
 script = ExtResource("2_epypp")
-jump_strength = 1300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=708683903]
 texture_filter = 1
