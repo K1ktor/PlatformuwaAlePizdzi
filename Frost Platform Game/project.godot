@@ -13,7 +13,7 @@ config_version=5
 config/name="Frost Platform Game"
 run/main_scene="uid://drv50y5du7k1k"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c4b4p4d0ra3cs"
 
 [display]
 

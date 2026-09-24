@@ -5,14 +5,15 @@ class_name Player_Object
 @onready var wall_collider := $Climb_wall_collider
 @onready var tile_map := $"../TileMapLayer"
 
-@export var speed := 600.0
-@export var jump_strength := 1500.0
-@export var gravity := 4500.0
+var speed := 600.0
+var jump_strength := 100
+var gravity := 3000.0 
 
 var can_climb_activate := false # Is player next to wall that can be climbed
 var wall_that_is_climbed_on : Climb_Wall
 var is_climbing := false
 var is_jumping := false
+var is_falling := false
 const coyote_init_jump_time := 0.1 
 var coyote_jump_time := 0.1
 var prev_friction := 999999.0
@@ -62,6 +63,7 @@ func IsClimbColliderInsideArea(moveDir : Vector2):
 func NormalState(delta: float):
 	# Get on what type of ground player is if it's ice its more slipery
 	var friction = GetGroundFriction() 
+	is_falling = velocity.y > 0
 	
 	var _horizontal_direction = (
 		Input.get_action_strength("moveRight")
@@ -84,6 +86,12 @@ func NormalState(delta: float):
 			friction = 0.5
 		is_jumping = true
 		velocity.y = -jump_strength
+		print(velocity.y)
+		print(jump_strength)
+	if (is_jumping and Input.is_action_just_released("jump") and is_falling == false):
+		velocity.y /= 50
+		pass
+		
 
 	# ease between speed to apply friction
 	velocity.x = move_toward(velocity.x, _horizontal_direction * speed, friction * 1000 * delta)
